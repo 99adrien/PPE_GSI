@@ -10,12 +10,12 @@ include_once "$racine/modele/authentification.inc.php";
 $nSalle = $_GET["nSalle"];
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
-$unResto = getSalleByNum($nSalle);
+$uneSalle = getSalleByNum($nSalle);
 $mailU = getMailULoggedOn();
 $unPoste = getPosteBySalle($nSalle);
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
-$titre = "detail d'un restaurant";
+$titre = "Détails de la salle";
 include "$racine/vue/entete.html.php";
 include "$racine/vue/vueDetailSalle.php";
 include "$racine/vue/pied.html.php";

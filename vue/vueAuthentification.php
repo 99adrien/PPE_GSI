@@ -1,16 +1,29 @@
-<h1>Connexion</h1>
-<form action="./?action=connexion" method="POST">
+<div class="container">
+    </br>
+	<h1>Connexion</h1>
+	</br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+				<form action="./?action=connexion" method="POST">
+				    <input type="text" name="mailU" placeholder="Email de connexion" /><br />
+				    <input type="password" name="mdpU" placeholder="Mot de passe"  /><br />
+				    </br>
+				    <button type="submit" value="submit" class="btn btn-dark">Connexion</button>
+				</form>
+			</div>
 
-    <input type="text" name="mailU" placeholder="Email de connexion" /><br />
-    <input type="password" name="mdpU" placeholder="Mot de passe"  /><br />
-    <input type="submit" />
+			<div class="col-md-4">
+				<p>Pas encore inscrit ?</p>
+				<a href="./?action=inscription">S'incrire ici</a>
+			</div>
+		</div>
+	</div>
 
-</form>
-<br />
-<a href="./?action=inscription">Inscription</a>
-
-<hr>
-Utilisateur de test : <br />
-login : test@bts.sio<br />
-mot de passe : sio
+	<hr>
+	
+	Utilisateur de test : sio<br />
+	login : test@bts.sio<br />
+	mot de passe : sio
+</div>
 

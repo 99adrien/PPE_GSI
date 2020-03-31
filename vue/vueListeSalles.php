@@ -1,31 +1,21 @@
-
-<h1>Liste des postes</h1>
-
-<?php
-for ($i = 0; $i < count($listeRestos); $i++) {?>
-    <div class="card">
-        <div class="descrCard"><?php echo "<a href='./?action=detail&nSalle=" . $listeRestos[$i]['nSalle'] . "'>" . $listeRestos[$i]['nomSalle'] . "</a>"; ?>
-            <br />
-            <p>Adresse IP : <?= $listeRestos[$i]["indIP"] ?></p>
-            <p>Nombre de postes : <?= $listeRestos[$i]["nbPoste"] ?></p>
-        </div>
-        <div class="tagCard">
-            <ul id="tagFood">		
-
-
-            </ul>
-
-
-        </div>
-
-    </div>
-
-
-
-
-
+<div class="container">
+    </br>
+    <h1>Liste des salles</h1>
+    </br>
     <?php
-}
-?>
+    for ($i = 0; $i < count($listeSalles); $i++) {?>
+        <div class="card">
+            <div class="container">
+                <div class="descrCard"><?php echo "<a href='./?action=detail&nSalle=" . $listeSalles[$i]['nSalle'] . "'>" . $listeSalles[$i]['nomSalle'] . "</a>"; ?>
+                    <br />
+                    <p>Nombre de postes : <?= $listeSalles[$i]["nbPoste"] ?></p>
+                    <p>Adresse IP : <?= $listeSalles[$i]["indIP"] ?></p>
+                </div>
+            </div>
+        </div>
+        <br />
 
-
+        <?php
+    }
+    ?>
+</div>

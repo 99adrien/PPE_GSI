@@ -4,11 +4,6 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 }
 include_once "$racine/modele/authentification.inc.php";
 
-// creation du menu burger
-$menuBurger = array();
-$menuBurger[] = Array("url"=>"./?action=connexion","label"=>"Connexion");
-$menuBurger[] = Array("url"=>"./?action=inscription","label"=>"Inscription");
-
 // recuperation des donnees GET, POST, et SESSION
 if (isset($_POST["mailU"]) && isset($_POST["mdpU"])){
     $mailU=$_POST["mailU"];
@@ -19,9 +14,6 @@ else
     $mailU="";
     $mdpU="";
 }
-
-// appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
-
 
 // traitement si necessaire des donnees recuperees
 login($mailU,$mdpU);

@@ -8,7 +8,7 @@ include_once "$racine/modele/bd.salle.inc.php";
 ;
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
-$listeRestos = getSalles();
+$listeSalles = getSalles();
 
 // traitement si necessaire des donnees recuperees
 ;
