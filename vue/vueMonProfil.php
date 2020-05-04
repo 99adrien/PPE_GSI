@@ -10,7 +10,7 @@
 			<strong>Gestion des postes :</strong><br>
 			<a href="./?action=creation">Créer </a><br>
             <a href="./?action=suppression">Supprimer</a><br>
-			<a href="./?action=modification">Modifier</a>
+			<a href="./?action=choixmodif">Modifier</a>
 	<?php
 		}?>
 

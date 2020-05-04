@@ -12,10 +12,9 @@ if (isset($_POST["nPoste"]) && isset($_POST["nomPoste"]) && isset($_POST["typePo
     $nomPoste=$_POST["nomPoste"];
     $typePoste=$_POST["typePoste"];
     $nSalle=$_POST["nSalle"];
-    
+
     // traitement si necessaire des donnees recuperees
-    modifierPoste($nPoste, $nomPoste, $typePoste, $nSalle); 
-    
+    modifierPoste($nPoste, $nomPoste, $typePoste, $nSalle);
     ?>
     <div class="alert alert-success">Poste modifié !</div>
 <?php
@@ -32,10 +31,11 @@ else
 $lesPostes = getPostes();
 $lesSalles = getSalles();
 $lesTypes = getTypes();
-$infos = getInfosPoste($_POST['nPoste']);
+$infos = getInfosPoste($nPoste);
+
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Modification de la salle d'un poste";
 include "$racine/vue/entete.html.php";
-include "$racine/vue/vueModification.php";
+include "$racine/vue/vueModification2.php";
 include "$racine/vue/pied.html.php";
 ?>
