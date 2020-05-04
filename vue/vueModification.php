@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <p>Numéro de poste : <?php echo $_POST['nPoste']; ?></p>
+                    <p>Numéro du poste : <?php echo $_POST['nPoste']; ?></p>
                 </div>
             </div>
         </div>
