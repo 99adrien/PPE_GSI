@@ -1,28 +1,27 @@
+<div class="container">
+    </br>
+    <h1>Recherche d'une salle</h1>
+    <form action="./?action=recherche&critere=<?= $critere ?>" method="POST">
 
-<h1>Recherche d'un restaurant</h1>
-<form action="./?action=recherche&critere=<?= $critere ?>" method="POST">
 
-
-    <?php
-    switch ($critere) {
-        case "nom":
-            ?>
-            Recherche par nom : <br />
-            <input type="text" name="nomR" placeholder="nom" value="<?= $nomR ?>" /><br />
-            <?php
+        <?php
+        switch ($critere) {
+            case "nom":
+                ?>
+                Recherche par nom : <br />
+                <input type="text" name="nom" placeholder="nom" value="<?= $nomSalle ?>" /><br />
+                <?php
+                break;
+            case "adresse":
+                ?>
+                Recherche par adresse IP : <br />
+                <input type="text" name="adresse" placeholder="adresse IP" value="<?= $indIP ?>"/><br />
+        <?php
             break;
-        case "adresse":
-            ?>
-            Recherche par adresse : <br />
-            <input type="text" name="villeR" placeholder="ville" value="<?= $villeR ?>"/><br />
-            <input type="text" name="cpR" placeholder="code postal" value="<?= $cpR ?>"/><br />
-            <input type="text" name="voieAdrR" placeholder="rue" value="<?= $voieAdrR ?>"/><br />
-            <?php
-            break;
+                    }
+        ?>
+        <br />
+        <button type="submit" value="submit" class="btn btn-dark">Rechercher</button>
 
-    }
-    ?>
-    <br /><br />
-    <input type="submit" value="Rechercher" />
-
-</form>
+    </form>
+</div>

@@ -8,12 +8,12 @@ function login($mailU, $mdpU) {
     }
 
     $util = getUtilisateurByMailU($mailU);
-    $mdpBD = $util["mdpU"];
+    $mdpBD = $util["password"];
 
     if (trim($mdpBD) == trim(crypt($mdpU, $mdpBD))) {
         // le mot de passe est celui de l'utilisateur dans la base de donnees
-        $_SESSION["mailU"] = $mailU;
-        $_SESSION["mdpU"] = $mdpBD;
+        $_SESSION["email"] = $mailU;
+        $_SESSION["password"] = $mdpBD;
     }
 }
 
@@ -21,13 +21,13 @@ function logout() {
     if (!isset($_SESSION)) {
         session_start();
     }
-    unset($_SESSION["mailU"]);
-    unset($_SESSION["mdpU"]);
+    unset($_SESSION["email"]);
+    unset($_SESSION["password"]);
 }
 
 function getMailULoggedOn(){
     if (isLoggedOn()){
-        $ret = $_SESSION["mailU"];
+        $ret = $_SESSION["email"];
     }
     else {
         $ret = "";
@@ -42,9 +42,9 @@ function isLoggedOn() {
     }
     $ret = false;
 
-    if (isset($_SESSION["mailU"])) {
-        $util = getUtilisateurByMailU($_SESSION["mailU"]);
-        if ($util["mailU"] == $_SESSION["mailU"] && $util["mdpU"] == $_SESSION["mdpU"]
+    if (isset($_SESSION["email"])) {
+        $util = getUtilisateurByMailU($_SESSION["email"]);
+        if ($util["email"] == $_SESSION["email"] && $util["password"] == $_SESSION["password"]
         ) {
             $ret = true;
         }
@@ -67,5 +67,23 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 
     // deconnexion
     logout();
+}
+
+function register($nomU, $mailU, $password) {
+    try {
+        $cnx = connexionPDO1();
+ 
+        $mdpCrypt = crypt($password, "sel");
+        $req = $cnx->prepare("insert into mrbs_users (email, password, name) values(:mailU,:password,:nomU)");
+        $req->bindValue(':mailU', $mailU, PDO::PARAM_STR);
+        $req->bindValue(':password', $mdpCrypt, PDO::PARAM_STR);
+        $req->bindValue(':nomU', $nomU, PDO::PARAM_STR);
+        
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
 }
 ?>
