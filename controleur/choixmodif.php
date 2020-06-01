@@ -20,6 +20,6 @@ $lesPostes = getPostes();
 // appel du script de vue qui permet de gerer l'affichage des donnees
 $titre = "Modification de la salle d'un poste";
 include "$racine/vue/entete.html.php";
-include "$racine/vue/vueModification2.php";
+include "$racine/vue/vueChoix.php";
 include "$racine/vue/pied.html.php";
 ?>

@@ -2,11 +2,11 @@
     </br>
     <h1>Modification</h1>
     <form action="./?action=modification" method="POST">
-
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <p>Numéro du poste : <?php echo $_POST['nPoste']; ?></p>
+                    <label>Numéro de poste</label>
+                    <input type="text" name="nPoste" class="form-control" value="<?php echo $infos[0]['nPoste']; ?>">
                 </div>
             </div>
         </div>
@@ -15,17 +15,34 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Nom poste</label>
-                    <input type="text" name="nomPoste" class="form-control" value="<?php echo $infos['nomPoste'] ; ?>">
+                    <input type="text" name="nomPoste" class="form-control" value="<?php echo $infos[0]['nomPoste']; ?>">
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Choisir l'étage</label>
+                    <select cols='100' rows='10' class="form-control" name="indIP">
+                        <option value="<?php echo $infos[0]['indIP']; ?>"><?php echo $infos[0]['nomSegment']; ?></option>
+                        <?php
+                            for ($i = 0; $i < count($lesSegments); $i++) {?>
+                            { ?>  
+                                <option value="<?php echo $lesSegments[$i]['indIP']; ?>"><?php echo $lesSegments[$i]['nomSegment'];?></option>
+                        <?php
+                            } ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Choisir le type de poste</label>
                     <select cols='100' rows='10' class="form-control" name="typePoste">
-                        <option></option>
+                        <option value="<?php echo $infos[0]['typePoste']; ?>"><?php echo $infos[0]['typePoste']; ?></option>
                         <?php
                             for ($i = 0; $i < count($lesTypes); $i++) {?>
                                 <option value="<?php echo $lesTypes[$i]['typeLP']; ?>"><?php echo $lesTypes[$i]['nomType'];?></option>
@@ -36,11 +53,11 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Choisir la salle</label>
                     <select cols='100' rows='10' class="form-control" name="nSalle">
-                        <option></option>
+                        <option value="<?php echo $infos[0]['nSalle']; ?>"><?php echo $infos[0]['nomSalle']; ?></option>
                         <?php
                             for ($i = 0; $i < count($lesSalles); $i++) {?>
                             { ?>  
@@ -48,6 +65,15 @@
                         <?php
                             } ?>
                     </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Administrateur</label>
+                    <input type="text" name="ad" class="form-control" value="<?php echo $infos[0]['ad']; ?>">
                 </div>
             </div>
         </div>
