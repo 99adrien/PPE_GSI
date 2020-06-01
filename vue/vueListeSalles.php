@@ -22,7 +22,7 @@
         }
     }
     else{?>
-        <h1>Maison des ligues</h1>
+        <h1>Maison des Ligues</h1>
         </br>
         <div class="card">
             <div class="container">
