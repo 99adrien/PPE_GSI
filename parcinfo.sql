@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 11 Novembre 2019 à 13:23
+-- Généré le :  Mer 03 Juin 2020 à 14:19
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `tpparcinfo`
+-- Base de données :  `parcinfo`
 --
 
 -- --------------------------------------------------------
@@ -128,7 +128,33 @@ INSERT INTO `poste` (`nPoste`, `nomPoste`, `indIP`, `ad`, `typePoste`, `nSalle`,
 ('p6', 'Poste 6', '130.120.80', '06', 'UNIX', 's03', 0),
 ('p7', 'Poste 7', '130.120.80', '07', 'TX', 's03', 0),
 ('p8', 'Poste 8', '130.120.81', '01', 'UNIX', 's11', 0),
-('p9', 'Poste 9', '130.120.81', '02', 'TX', 's11', 0);
+('p9', 'Poste 9', '130.120.81', '02', 'TX', 's11', 0),
+('P911', 'Poste 911', '130.120.82', '12', 'UNIX', 's23', 0);
+
+--
+-- Déclencheurs `poste`
+--
+DELIMITER $$
+CREATE TRIGGER `Trig_NbPoste_Add` AFTER INSERT ON `poste` FOR EACH ROW BEGIN
+    UPDATE salle SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.nSalle = salle.nSalle);
+    UPDATE segment SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.indIP = segment.indIP);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `Trig_NbPoste_Delete` AFTER DELETE ON `poste` FOR EACH ROW BEGIN
+    UPDATE salle SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.nSalle = salle.nSalle);
+    UPDATE segment SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.indIP = segment.indIP);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `Trig_NbPoste_Update` AFTER UPDATE ON `poste` FOR EACH ROW BEGIN
+    UPDATE salle SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.nSalle = salle.nSalle);
+    UPDATE segment SET nbPoste = (SELECT COUNT(nPoste) FROM poste WHERE poste.indIP = segment.indIP);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -168,8 +194,8 @@ INSERT INTO `salle` (`nSalle`, `nomSalle`, `nbPoste`, `indIP`) VALUES
 ('s11', 'Salle 11', 2, '130.120.81'),
 ('s12', 'Salle 12', 1, '130.120.81'),
 ('s21', 'Salle 21', 2, '130.120.82'),
-('s22', 'Salle 22', 0, '130.120.83'),
-('s23', 'Salle 23', 0, '130.120.83');
+('s22', 'Salle 22', 0, '130.120.82'),
+('s23', 'Salle 23', 1, '130.120.82');
 
 -- --------------------------------------------------------
 
@@ -202,9 +228,9 @@ CREATE TABLE `segment` (
 --
 
 INSERT INTO `segment` (`indIP`, `nomSegment`, `etage`, `nbSalle`, `nbPoste`) VALUES
-('130.120.80', 'Brin RDC', NULL, 0, 0),
-('130.120.81', 'Brin 1er  étage', NULL, 0, 0),
-('130.120.82', 'Brin 2ème étage', NULL, 0, 0);
+('130.120.80', 'Brin RDC', NULL, 0, 7),
+('130.120.81', 'Brin 1er  étage', NULL, 0, 3),
+('130.120.82', 'Brin 2ème étage', NULL, 0, 3);
 
 -- --------------------------------------------------------
 
