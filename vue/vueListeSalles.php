@@ -22,12 +22,12 @@
         }
     }
     else{?>
-        <h1>Maison des ligues</h1>
+        <h1>Maison des Ligues</h1>
         </br>
         <div class="card">
             <div class="container">
                 <br>
-                <p>Bienvenue sur le site de Gestion du Parc Informatique de la <a href="https://m2l-france.com/">Maison des Ligues</a>.<br><br>Pour plus d'informations, veuillez vous connecter.</p>
+                <p>Bienvenue sur le site de Gestion des Salles Informatiques de la <a href="https://m2l-france.com/">Maison des Ligues</a>.<br><br>Pour plus d'informations, veuillez vous connecter.</p>
             </div>
         </div>
     <?php

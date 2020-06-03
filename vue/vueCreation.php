@@ -21,20 +21,20 @@
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Choisir l'étage</label>
                         <select cols='100' rows='10' class="form-control" name="indIP">
                             <option></option>
                             <?php
-                                for ($i = 0; $i < count($lesSegments); $i++) {?>
-                                    <option value="<?php echo $lesSegments[$i]['indIP']; ?>"><?php echo $lesSegments[$i]['nomSegment'];?></option>
-                            <?php } ?>
+                                // for ($i = 0; $i < count($lesSegments); $i++) {?>
+                                    <option value="<?php // echo $lesSegments[$i]['indIP']; ?>"><?php // echo $lesSegments[$i]['nomSegment'];?></option>
+                            <?php //} ?>
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <div class="col-md-4">

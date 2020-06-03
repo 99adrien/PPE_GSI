@@ -150,7 +150,7 @@ function getSallesByAdresseIP($ip) {
 }
 
 
-function creerPoste($nomPoste, $typePoste, $numSalle, $numPoste) {
+function creerPoste($nomPoste, $typePoste, $numSalle, $numPoste, $ad) {
     try {
         $cnx = connexionPDO();
         $reqindIP = "SELECT indIP from Salle WHERE nSalle ='".$numSalle."';";
@@ -158,8 +158,8 @@ function creerPoste($nomPoste, $typePoste, $numSalle, $numPoste) {
         $resindIP = $reqindIP->fetch();
         $resindIP = $resindIP['indIP'];
         $req = "INSERT  INTO Poste
-            (nPoste, nomPoste, typePoste, nSalle, indIP)
-            VALUES ('".$numPoste."', '".$nomPoste."', '".$typePoste."', '".$numSalle."' , '".$resindIP."');";
+            (nPoste, nomPoste, typePoste, nSalle, indIP, ad)
+            VALUES ('".$numPoste."', '".$nomPoste."', '".$typePoste."', '".$numSalle."' , '".$resindIP."', '".$ad."');";
         $resultat = $cnx->query($req);
         return true;
     } catch (PDOException $e) {
@@ -169,14 +169,14 @@ function creerPoste($nomPoste, $typePoste, $numSalle, $numPoste) {
     }
 }
 
-function modifierPoste($nPoste, $nomPoste, $typePoste, $nSalle){
+function modifierPoste($nPoste, $nomPoste, $ad, $typePoste, $nSalle){
     try {
         $cnx = connexionPDO();
         $reqindIP = "SELECT indIP from Salle WHERE nSalle ='".$nSalle."';";
         $reqindIP = $cnx->query($reqindIP);
         $resindIP = $reqindIP->fetch();
         $resindIP = $resindIP['indIP'];
-        $req = $cnx->prepare("update poste set nomPoste = '".$nomPoste."', indIP = '".$resindIP."', typePoste = '".$typePoste."', nSalle = '".$nSalle."' where nPoste = '".$nPoste."'");
+        $req = $cnx->prepare("update poste set nomPoste = '".$nomPoste."', ad = '".$ad."', indIP = '".$resindIP."', typePoste = '".$typePoste."', nSalle = '".$nSalle."' where nPoste = '".$nPoste."'");
         $req->execute();
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();

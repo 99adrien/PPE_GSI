@@ -6,7 +6,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Numéro de poste</label>
-                    <input type="text" name="nPoste" class="form-control" value="<?php echo $infos[0]['nPoste']; ?>">
+                    <input type="text" name="nPoste" class="form-control" value="<?php echo $infos[0]['nPoste']; ?>" readonly>
                 </div>
             </div>
         </div>
@@ -16,23 +16,6 @@
                 <div class="form-group">
                     <label>Nom poste</label>
                     <input type="text" name="nomPoste" class="form-control" value="<?php echo $infos[0]['nomPoste']; ?>">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Choisir l'étage</label>
-                    <select cols='100' rows='10' class="form-control" name="indIP">
-                        <option value="<?php echo $infos[0]['indIP']; ?>"><?php echo $infos[0]['nomSegment']; ?></option>
-                        <?php
-                            for ($i = 0; $i < count($lesSegments); $i++) {?>
-                            { ?>  
-                                <option value="<?php echo $lesSegments[$i]['indIP']; ?>"><?php echo $lesSegments[$i]['nomSegment'];?></option>
-                        <?php
-                            } ?>
-                    </select>
                 </div>
             </div>
         </div>
